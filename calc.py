@@ -1,15 +1,20 @@
 import json
+import os
 
-with open("output.json") as jsonfile:
-    data = json.load(jsonfile)
+folder = "arms_output"
+data = []
+# Load from files
+for file in sorted(os.listdir(folder)):
+    with open(os.path.join(folder, file)) as jsonfile:
+        data.append(json.load(jsonfile))
 
-hand_left_x0 = data["people"][0]["hand_left_keypoints_2d"][0]
-hand_left_y0 = data["people"][0]["hand_left_keypoints_2d"][1]
+# Extract the pose keypoints from the data
+data = [x["people"][0]["pose_keypoints_2d"] for x in data]
 
-added = hand_left_x0 + hand_left_y0
+# Utility function to split data
+def split_to_points(lst):
+    CHUNK_SIZE = 3 # A point is (x, y, confidence)
+    return [tuple(lst[i:(i + CHUNK_SIZE)]) for i in range(0, len(lst), CHUNK_SIZE)]
 
-# next we want to calculate the angles from (x0,y0) to (x1,y1)
-
-print(added)
-print(hand_left_x)
-print(hand_left_y)
+# Split data into points
+data = [split_to_points(x) for x in data]
