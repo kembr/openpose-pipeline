@@ -1,0 +1,14 @@
+from matplotlib import pyplot as plt
+
+# example elbow joint angles
+angles = [90, 86, 84, 80, 78, 75, 73, 70, 68, 66, 63, 61, 59, 57, 54, 53, 48, 40, 34, 33, 35, 37, 40, 44, 47, 50, 53, 55, 58, 60, 63, 65, 68, 70, 73, 75, 77, 80, 84, 88, 90]
+
+seconds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,  27, 28,  29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41]
+
+plt.plot(seconds, angles)
+
+plt.title("elbow angles over time")
+plt.xlabel('seconds')
+plt.ylabel('degrees')
+
+plt.show()
