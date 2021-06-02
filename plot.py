@@ -1,18 +1,28 @@
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
+import numpy as np
+from functions import *
 
-# example elbow joint angles
-angles = [90, 86, 84, 80, 78, 75, 73, 70, 68, 66, 63, 61, 59, 57, 54, 53, 48, 40, 34, 33, 35, 37, 40, 44, 47, 50, 53, 55, 58, 60, 63, 65, 68, 70, 73, 75, 77, 80, 84, 88, 90]
+folder = "arms_output"
+data = load_openpose(folder)
 
-seconds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,  27, 28,  29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41]
+# Extract the pose keypoints from the data
+data = [x["people"][0]["pose_keypoints_2d"] for x in data]
+# Split data into points
+data = [split_to_points(x) for x in data]
 
-plt.plot(seconds, angles)
-
-plt.title("elbow angles over time")
-plt.xlabel('seconds')
-plt.ylabel('degrees')
-
-plt.show()
-
+frame = data[40]  # plotting for the specific frame number from 0-180
+x = np.array(frame)[:, 0]  # all of the x values of the pixels
+y = np.array(frame)[:, 1]  # all of the y values of the pixels
+plt.figure(1)  # opens a figure 1 file
+# plots the x and y coordinates of the pixels in blue cirlces
+plt.plot(x, y, 'bo')
+plt.xlabel('x position (pixels)')  # provides x label
+plt.ylabel('y position (pixels)')  # provides y label
+plt.xlim([0, 854])  # makes the x limits
+plt.ylim([0, 480])  # makes the y limits
+plt.title('Plotted Data Points of the Video In Pixels')  # gives title
+plt.gca().invert_yaxis()  # inverts the axis
+plt.show()  # shows the plot
 
 # Plots a line segment between two points
 def plot_line(p1, p2):
@@ -37,3 +47,4 @@ def plot_hand(data):
         for j in range(subline[1], subline[2]):
             plot_line((data[j][0], data[j][1]), (data[j+1][0], data[j+1][1]))
     plt.gca().invert_yaxis()
+

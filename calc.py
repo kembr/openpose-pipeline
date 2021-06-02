@@ -1,15 +1,9 @@
-import json
+from functions import *
 
-with open("output.json") as jsonfile:
-    data = json.load(jsonfile)
+folder = "arms_output"
+data = load_openpose(folder)
 
-hand_left_x0 = data["people"][0]["hand_left_keypoints_2d"][0]
-hand_left_y0 = data["people"][0]["hand_left_keypoints_2d"][1]
-
-added = hand_left_x0 + hand_left_y0
-
-# next we want to calculate the angles from (x0,y0) to (x1,y1)
-
-print(added)
-print(hand_left_x)
-print(hand_left_y)
+# Extract the pose keypoints from the data
+data = [x["people"][0]["pose_keypoints_2d"] for x in data]
+# Split data into points
+data = [split_to_points(x) for x in data]
