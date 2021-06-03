@@ -2,15 +2,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 from functions import *
 
-folder = "arms_output"
-data = load_openpose(folder)
+BODY_FOLDER = "arms_output"
+BODY_DATA = load_openpose(folder)
 
 # Extract the pose keypoints from the data
-data = [x["people"][0]["pose_keypoints_2d"] for x in data]
+BODY_DATA = [x["people"][0]["pose_keypoints_2d"] for x in data]
 # Split data into points
-data = [split_to_points(x) for x in data]
+BODY_DATA = [split_to_points(x) for x in data]
 
-frame = data[40]  # plotting for the specific frame number from 0-180
+# Graph only points of body
+'''
+frame = BODY_DATA[40]  # plotting for the specific frame number from 0-180
 x = np.array(frame)[:, 0]  # all of the x values of the pixels
 y = np.array(frame)[:, 1]  # all of the y values of the pixels
 plt.figure(1)  # opens a figure 1 file
@@ -23,6 +25,7 @@ plt.ylim([0, 480])  # makes the y limits
 plt.title('Plotted Data Points of the Video In Pixels')  # gives title
 plt.gca().invert_yaxis()  # inverts the axis
 plt.show()  # shows the plot
+'''
 
 # Plots a line segment between two points
 def plot_line(p1, p2):
@@ -37,6 +40,12 @@ def plot_body(data):
         for j in range(subline[1], subline[2]):
             plot_line((data[j][0], data[j][1]), (data[j+1][0], data[j+1][1]))
     plt.gca().invert_yaxis()
+    plt.title('Plotted Data Points of the Body In Pixels')  # gives title
+    plt.xlabel('x position (pixels)')  # provides x label
+    plt.ylabel('y position (pixels)')  # provides y label
+    plt.xlim([0, 854])  # makes the x limits
+    plt.ylim([0, 480])  # makes the y limits
+    plt.show()
 
 # Plots a hand given an array of points
 def plot_hand(data):
@@ -47,4 +56,37 @@ def plot_hand(data):
         for j in range(subline[1], subline[2]):
             plot_line((data[j][0], data[j][1]), (data[j+1][0], data[j+1][1]))
     plt.gca().invert_yaxis()
+    plt.title('Plotted Data Points of the Hand In Pixels')  # gives title
+    plt.xlabel('x position (pixels)')  # provides x label
+    plt.ylabel('y position (pixels)')  # provides y label
+    plt.show()
 
+def plot_joint_over_time(joint, data):
+    angles = [angle_from_frame(joint, frame) for frame in data]
+    plt.figure(1)  # opens a figure 1 file
+    # plots the x and y coordinates of the pixels in blue cirlces
+    plt.plot(range(len(angles)), angles, 'b')
+    plt.title("Graph of Angle of " + JOINTS[joint] + " Over Time")
+    plt.xlabel("Frame")
+    plt.ylabel("Angle of " + JOINTS[joint] + " (degrees)")
+    plt.ylim([0,180])
+    plt.show()
+    
+    def plot_joint_vs_joint(joint1, joint2, data):
+    angles1 = [angle_from_frame(joint1, frame) for frame in data]
+    angles2 = [angle_from_frame(joint2, frame) for frame in data]
+    plt.figure(1)  # opens a figure 1 file
+    # plots the x and y coordinates of the pixels in blue cirlces
+    plt.plot(angles1, angles2, 'b')
+    plt.title("Graph of " + JOINTS[joint1] + " Angle vs " + JOINTS[joint2] + " Angle")
+    plt.xlabel("Angle of " + JOINTS[joint1] + " (degrees)")
+    plt.ylabel("Angle of " + JOINTS[joint2] + " (degrees)")
+    plt.xlim([0, 180])
+    plt.ylim([0, 180])
+    plt.show()
+
+# Graph angle of each joint over time
+for joint in JOINTS.keys():
+    plot_joint_over_time(joint, BODY_DATA)
+
+plot_joint_vs_joint(R_ELBOW, L_ELBOW, BODY_DATA)
