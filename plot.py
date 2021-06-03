@@ -2,6 +2,27 @@ import matplotlib.pyplot as plt
 import numpy as np
 from functions import *
 
+# Joints
+L_ELBOW = (5,6,7)
+R_ELBOW = (2,3,4)
+L_SHOULDER = (1,5,6)
+R_SHOULDER = (1,2,3)
+L_HIP = (8,12,13)
+R_HIP = (8,9,10)
+L_KNEE = (12,13,14)
+R_KNEE = (9,10,11)
+
+JOINTS = {
+    L_ELBOW: "Left Elbow",
+    R_ELBOW: "Right Elbow",
+    L_SHOULDER: "Left Shoulder",
+    R_SHOULDER: "Right Shoulder",
+    L_HIP: "Left Hip",
+    R_HIP: "Right Hip",
+    L_KNEE: "Left Knee",
+    R_KNEE: "Right Knee"
+}
+
 BODY_FOLDER = "arms_output"
 BODY_DATA = load_openpose(folder)
 
