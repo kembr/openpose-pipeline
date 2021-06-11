@@ -11,7 +11,7 @@ Heplful flags:
   `--disable_blending true`: renders keypoint skeletons on black background instead of original video
 
 Command to run quickly on one person:
-`bin\OpenPoseDemo.exe --video \[video_file] --write_json \[output_folder] --tracking 1 --number_people_max 1`
+`bin\OpenPoseDemo.exe --video [video_file] --write_json [output_folder] --tracking 1 --number_people_max 1`
 
 NB: the json output in each file is printed to one line, which is unwieldy.
   If using vim you can use `:%!python -m json.tool` to pretty print the json
