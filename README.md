@@ -2,7 +2,13 @@ A project to automate calculation of joint angles frop openpose JSON output.
 
 Next steps:
 
-  - Create a plot of joint angle changes (see /sample_plots) using Matplotlib.
+  - Make sure generated plots of joint angle changes are saved to an output folder.
+  - Combine overlapping code into fewer files. (Main execution file, with functions helper file)
+  - Goal: have a workable demo which will:
+      1. trigger openpose
+      2. capture json output
+      3. calculate the appropriate joint angles and save results.
+      4. generate save the graphs.
 
 Heplful flags:
   `--write_json <path>`: specify path to save json output files.
