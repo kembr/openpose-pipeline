@@ -10,13 +10,13 @@ Next steps:
       3. calculate the appropriate joint angles and save results.
       4. generate save the graphs.
 
-Heplful flags:
+Heplful flags:  
   `--write_json <path>`: specify path to save json output files.  
   `--write_video <path>`: specifiy path to save rendered video output.  
   `--write_video_with_audio false`: if input is a video, rendered video output will not be saved with audio  
   `--disable_blending true`: renders keypoint skeletons on black background instead of original video  
 
-Command to run quickly on one person:
+Command to run quickly on one person:  
 `bin\OpenPoseDemo.exe --video [video_file] --write_json [output_folder] --tracking 1 --number_people_max 1`
 
 NB: the json output in each file is printed to one line, which is unwieldy.
