@@ -2,7 +2,7 @@ A project to automate calculation of joint angles frop openpose JSON output.
 
 Next steps:
 
-  - Make sure generated plots of joint angle changes are saved to an output folder.
+  - √ ~~Make sure generated plots of joint angle changes are saved to an output folder.~~
   - Combine overlapping code into fewer files. (Main execution file, with functions helper file)
   - Goal: have a workable demo which will:
       1. trigger openpose
