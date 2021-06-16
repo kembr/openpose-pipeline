@@ -2,7 +2,11 @@ import math
 import os
 import json
 
-# Elan Shetreat-Klein, 5/25/21
+
+def angle_from_frame(joint, frame):
+    # creates array of the output of calc_angle function
+    return calc_angle(*[frame[x][0:2] for x in joint])
+
 # Calculates angle between segments 12 and 23, P2 is the vertex
 def calc_angle(p1, p2, p3, degrees=True):
 

@@ -1,5 +1,3 @@
-# C Coulton 06092021
-
 from functions import *
 from matplotlib import pyplot as plt
 import os
