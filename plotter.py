@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 from functions import *
 
 # Joints
@@ -25,10 +24,11 @@ JOINTS = {
 
 def plot_joint_over_time(joint, data):
 	angles = [angle_from_frame(joint, frame) for frame in data]
-	plt.figure(1)  # opens a figure 1 file
+	plt.figure()
 	# plots the x and y coordinates of the pixels in blue cirlces
 	plt.plot(range(len(angles)), angles, 'b')
 	plt.title("Graph of Angle of " + JOINTS[joint] + " Over Time")
 	plt.xlabel("Frame")
 	plt.ylabel("Angle of " + JOINTS[joint] + " (degrees)")
+	plt.savefig(JOINTS[joint] + ".png")
 	plt.show()
