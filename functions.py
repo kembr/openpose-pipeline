@@ -37,18 +37,3 @@ def load_openpose(folder):
 		data = [x["people"][0]["pose_keypoints_2d"] for x in data]
 		data = [split_to_points(x) for x in data]
 		return data
-
-
-'''
-import os
-import shutil
-def plot_and_sort_angle():
-		plt.savefig(str(A) + '.png')
-
-		source = os.path.join('/Users/christinacoulton/Desktop/Python Files/openpose-pipeline')
-		sort = os.path.join('/Users/christinacoulton/Desktop/Python Files/openpose-pipeline/Plots')
-
-		for f in os.listdir(source):
-				if f.endswith(".png"):
-						shutil.move(os.path.join(source, f), sort)
-'''
