@@ -22,13 +22,16 @@ JOINTS = {
 		R_KNEE: "Right Knee"
 }
 
-def plot_joint_over_time(joint, data):
+def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"):
 	angles = [angle_from_frame(joint, frame) for frame in data]
 	plt.figure()
-	# plots the x and y coordinates of the pixels in blue cirlces
+	# plots the x and y coordinates of the pixels in blue circles
 	plt.plot(range(len(angles)), angles, 'b')
 	plt.title("Graph of Angle of " + JOINTS[joint] + " Over Time")
 	plt.xlabel("Frame")
 	plt.ylabel("Angle of " + JOINTS[joint] + " (degrees)")
-	plt.savefig(JOINTS[joint] + ".png")
-	plt.show()
+	if save:
+		plt.savefig(save_dir)
+	if show:
+		plt.show()
+	plt.close()
