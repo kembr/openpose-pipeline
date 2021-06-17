@@ -27,7 +27,7 @@ def split_to_points(lst):
 		return [tuple(lst[i:(i + CHUNK_SIZE)]) for i in range(0, len(lst), CHUNK_SIZE)]
 
 def load_openpose(folder):
-		data = []	
+		data = []
 		
 		# Load from each file in folder
 		for file in sorted(os.listdir(folder)):
