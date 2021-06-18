@@ -30,6 +30,8 @@ def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"
 	plt.title("Graph of Angle of " + JOINTS[joint] + " Over Time")
 	plt.xlabel("Frame")
 	plt.ylabel("Angle of " + JOINTS[joint] + " (degrees)")
+	plt.xlim([0, 180])
+	plt.ylim([0, 180])
 	if save:
 		plt.savefig(save_dir)
 	if show:
