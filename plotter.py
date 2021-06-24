@@ -10,6 +10,8 @@ L_HIP = (8,12,13)
 R_HIP = (8,9,10)
 L_KNEE = (12,13,14)
 R_KNEE = (9,10,11)
+L_ANKLE = (10,11,23)
+R_ANKLE = (13,14,20)
 
 JOINTS = {
 		L_ELBOW: "Left Elbow",
@@ -19,7 +21,9 @@ JOINTS = {
 		L_HIP: "Left Hip",
 		R_HIP: "Right Hip",
 		L_KNEE: "Left Knee",
-		R_KNEE: "Right Knee"
+		R_KNEE: "Right Knee",
+		L_ANKLE: "Left Ankle",
+		R_ANKLE: "Right Ankle"
 }
 
 def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"):
@@ -32,8 +36,12 @@ def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"
 	plt.ylabel("Angle of " + JOINTS[joint] + " (degrees)")
 	plt.xlim([0, 180])
 	plt.ylim([0, 180])
+	plt.savefig(JOINTS[joint] + ".png")
+	plt.show()
+	'''
 	if save:
 		plt.savefig(save_dir)
 	if show:
 		plt.show()
 	plt.close()
+'''
