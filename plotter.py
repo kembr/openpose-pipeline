@@ -38,10 +38,16 @@ def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"
 	plt.ylim([0, 180])
 	plt.savefig(JOINTS[joint] + ".png")
 	plt.show()
-	'''
 	if save:
 		plt.savefig(save_dir)
 	if show:
 		plt.show()
 	plt.close()
-'''
+
+
+def plot_line(p1, p2):
+	plt.plot([p1[0], p2[0]], [p1[1], p2[1]], 'ro-')
+
+# Shows an animation of the data for a body model or a hand model
+def animate(data_path, model_type):
+	os.system(f"animate.py {data_path} {model_type}")
