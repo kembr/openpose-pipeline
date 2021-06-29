@@ -62,10 +62,5 @@ def update(i):
     col.set_array(colors)
     return col,
 
-# Setting this to a very short update interval to show rapid drawing.
-# 25ms would be more reasonable than 1ms.
 ani = animation.FuncAnimation(fig, update, frames=len(data)-1, interval=25)
-# Some matplotlib versions explictly need an `init_func` to display properly...
-# Ideally we'd fully initialize the plot inside it. For simplicitly, we'll just
-# return the artist so that `FuncAnimation` knows what to draw.
 plt.show(block=True)
