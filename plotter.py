@@ -48,4 +48,4 @@ def plot_line(p1, p2):
 
 # Shows an animation of the data for a body model or a hand model
 def animate(data_path, model_type, save_path="None"):
-	os.system(f"animate.py {data_path} {model_type} {save_path}")
+	subprocess.run(["python3", "animate.py", data_path, model_type, save_path])
