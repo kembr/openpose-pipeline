@@ -8,13 +8,15 @@ if __name__ == "__main__":
     try:
         data = load_openpose(sys.argv[1])
         model_type = sys.argv[2]
+        save_path = sys.argv[3]
     except:
         data = load_openpose("Output//shoulder_abduction//json")
-        model_type = "body"
+        model_type = "Body"
+        save_path = "None"
 
-if model_type == "body":
+if model_type == "Body":
     connections = [(8,9,11), (11,22,23), (11,24,24), (8,12,14), (14,19,20), (14,21,21), (0,1,4), (1,5,7), (1,8,8), (0,15,15), (15,17,17), (0,16,16), (16,18,18)]
-if model_type == "hand":
+if model_type == "Band":
     connections = [(0, 17, 20), (0, 13, 16), (0, 9, 12), (0, 5, 8), (0, 1, 4)]
 
 frame = data[0]
@@ -36,7 +38,7 @@ fig, ax = plt.subplots()
 
 col = LineCollection(lines, array=colors)
 ax.add_collection(col)
-if model_type == "body":
+if model_type == "Body":
     ax.set_xlim([0, 854])
     ax.set_ylim([0, 480])
 ax.set_title('Plotted Data Points of the Body In Pixels')
@@ -62,5 +64,9 @@ def update(i):
     col.set_array(colors)
     return col,
 
+
 ani = animation.FuncAnimation(fig, update, frames=len(data)-1, interval=25)
-plt.show(block=True)
+if save_path == "None":
+    plt.show(block=True)
+else:
+    ani.save(save_path)
