@@ -47,5 +47,5 @@ def plot_line(p1, p2):
 	plt.plot([p1[0], p2[0]], [p1[1], p2[1]], 'ro-')
 
 # Shows an animation of the data for a body model or a hand model
-def animate(data_path, model_type):
-	os.system(f"animate.py {data_path} {model_type}")
+def animate(data_path, model_type, save_path="None"):
+	os.system(f"animate.py {data_path} {model_type} {save_path}")
