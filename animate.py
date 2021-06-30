@@ -4,19 +4,15 @@ import matplotlib.animation as animation
 from plotter import *
 import sys
 
+print(sys.argv[0], sys.argv[1], sys.argv[2], sys.argv[3])
 if __name__ == "__main__":
-    try:
-        data = load_openpose(sys.argv[1])
-        model_type = sys.argv[2]
-        save_path = sys.argv[3]
-    except:
-        data = load_openpose("Output//shoulder_abduction//json")
-        model_type = "Body"
-        save_path = "None"
+    data = load_openpose(sys.argv[1])
+    model_type = sys.argv[2]
+    save_path = sys.argv[3]
 
 if model_type == "Body":
     connections = [(8,9,11), (11,22,23), (11,24,24), (8,12,14), (14,19,20), (14,21,21), (0,1,4), (1,5,7), (1,8,8), (0,15,15), (15,17,17), (0,16,16), (16,18,18)]
-if model_type == "Band":
+if model_type == "Hand":
     connections = [(0, 17, 20), (0, 13, 16), (0, 9, 12), (0, 5, 8), (0, 1, 4)]
 
 frame = data[0]
