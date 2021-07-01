@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 from functions import *
-from animate import animate
 # Joints
 L_ELBOW = (5,6,7)
 R_ELBOW = (2,3,4)
