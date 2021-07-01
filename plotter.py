@@ -10,6 +10,8 @@ L_HIP = (8,12,13)
 R_HIP = (8,9,10)
 L_KNEE = (12,13,14)
 R_KNEE = (9,10,11)
+L_ANKLE = (10,11,23)
+R_ANKLE = (13,14,20)
 
 JOINTS = {
 		L_ELBOW: "Left Elbow",
@@ -19,7 +21,9 @@ JOINTS = {
 		L_HIP: "Left Hip",
 		R_HIP: "Right Hip",
 		L_KNEE: "Left Knee",
-		R_KNEE: "Right Knee"
+		R_KNEE: "Right Knee",
+		L_ANKLE: "Left Ankle",
+		R_ANKLE: "Right Ankle"
 }
 
 def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"):
@@ -37,3 +41,11 @@ def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"
 	if show:
 		plt.show()
 	plt.close()
+
+
+def plot_line(p1, p2):
+	plt.plot([p1[0], p2[0]], [p1[1], p2[1]], 'ro-')
+
+# Shows an animation of the data for a body model or a hand model
+def animate(data_path, model_type, save_path="None"):
+	subprocess.run(["python3", "animate.py", data_path, model_type, save_path])
