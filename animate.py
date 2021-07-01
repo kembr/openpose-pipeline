@@ -3,7 +3,7 @@ from matplotlib.collections import LineCollection
 import matplotlib.animation as animation
 from functions import *
 import matplotlib.pyplot as plt
-import sys
+
 def animate(data_path, model_type, save_path=None):
     data = load_openpose(data_path)
     if model_type == "Body":
