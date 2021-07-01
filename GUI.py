@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter.filedialog import askdirectory
 from plotter import *
+from animate import animate
 import os
 
 def choose_folder():
