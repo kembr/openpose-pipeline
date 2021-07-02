@@ -25,21 +25,29 @@ JOINTS = {
 		R_ANKLE: "Right Ankle"
 }
 
-def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png"):
+def plot_joint_over_time(joint, data, show=True, save=False, save_dir="plot.png", axis=None):
 	angles = [angle_from_frame(joint, frame) for frame in data]
-	plt.figure()
-	# plots the x and y coordinates of the pixels in blue circles
-	plt.plot(range(len(angles)), angles, 'b')
-	plt.title("Graph of Angle of " + JOINTS[joint] + " Over Time")
-	plt.xlabel("Frame")
-	plt.ylabel("Angle of " + JOINTS[joint] + " (degrees)")
-	plt.xlim([0, 180])
-	plt.ylim([0, 180])
-	if save:
-		plt.savefig(save_dir)
-	if show:
-		plt.show()
-	plt.close()
+	if axis is not None:
+		axis.plot(range(len(angles)), angles)
+		axis.set_title("Graph of Angle of " + JOINTS[joint] + " Over Time")
+		axis.set_xlabel("Frame")
+		axis.set_ylabel("Angle of " + JOINTS[joint] + " (degrees)")
+		axis.set_xlim([0, 180])
+		axis.set_ylim([0, 180])
+	else:
+		plt.figure()
+		# plots the x and y coordinates of the pixels in blue circles
+		plt.plot(range(len(angles)), angles, 'b')
+		plt.title("Graph of Angle of " + JOINTS[joint] + " Over Time")
+		plt.xlabel("Frame")
+		plt.ylabel("Angle of " + JOINTS[joint] + " (degrees)")
+		plt.xlim([0, 180])
+		plt.ylim([0, 180])
+		if save:
+			plt.savefig(save_dir)
+		if show:
+			plt.show()
+		plt.close()
 
 
 def plot_line(p1, p2):
