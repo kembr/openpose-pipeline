@@ -4,8 +4,7 @@ import matplotlib.animation as animation
 from functions import *
 import matplotlib.pyplot as plt
 
-def animate(data_path, model_type, save_path=None, subplots=None):
-    data = load_openpose(data_path)
+def animate(data, model_type, save_path=None, subplots=None):
     if model_type == "Body":
         connections = [(8,9,11), (11,22,23), (11,24,24), (8,12,14), (14,19,20), (14,21,21), (0,1,4), (1,5,7), (1,8,8), (0,15,15), (15,17,17), (0,16,16), (16,18,18)]
     if model_type == "Hand":
@@ -37,7 +36,7 @@ def animate(data_path, model_type, save_path=None, subplots=None):
     if model_type == "Body":
         ax.set_xlim([0, 854])
         ax.set_ylim([0, 480])
-    ax.set_title('Plotted Data Points of the Body In Pixels')
+    ax.set_title('Animation of Openpose Output')
     ax.set_xlabel('x position (pixels)')
     ax.set_ylabel('y position (pixels)')
     ax.invert_yaxis()
