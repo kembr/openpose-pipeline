@@ -4,7 +4,7 @@ import matplotlib.animation as animation
 from functions import *
 import matplotlib.pyplot as plt
 
-def animate(data_path, model_type, save_path=None):
+def animate(data_path, model_type, save_path=None, subplots=None):
     data = load_openpose(data_path)
     if model_type == "Body":
         connections = [(8,9,11), (11,22,23), (11,24,24), (8,12,14), (14,19,20), (14,21,21), (0,1,4), (1,5,7), (1,8,8), (0,15,15), (15,17,17), (0,16,16), (16,18,18)]
@@ -26,7 +26,11 @@ def animate(data_path, model_type, save_path=None):
 
     colors = np.array(colors)
 
-    fig, ax = plt.subplots()
+    if subplots is not None:
+        fig = subplots[0]
+        ax = subplots[1]
+    else:
+        fig, ax = plt.subplots()
 
     col = LineCollection(lines, array=colors)
     ax.add_collection(col)
