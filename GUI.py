@@ -81,11 +81,11 @@ save_plot_button = tk.Button(
 generate_anim_button = tk.Button(
     master=plot_frame,
     text="Show animation",
-    command=lambda: animate(chosen_folder_label.cget("text"), chosen_model.get()))
+    command=lambda: animate(load_openpose(chosen_folder_label.cget("text")), chosen_model.get()))
 save_anim_button = tk.Button(
     master=plot_frame,
     text="Save animation",
-    command=lambda: animate(chosen_folder_label.cget("text"), chosen_model.get(),
+    command=lambda: animate(load_openpose(chosen_folder_label.cget("text")), chosen_model.get(),
                             save_path=os.path.join(os.path.split(chosen_folder_label.cget("text"))[0], os.path.split(os.path.split(chosen_folder_label.cget("text"))[0])[1] + "_animation.gif")))
 plot_frame.pack(pady=10)
 plot_label.pack()
