@@ -1,9 +1,6 @@
 import os
 import subprocess
 
-
-
-
 def openposedemo(options):
     openposedir = os.path.abspath('openpose')
     subprocess.run([os.path.join(openposedir, 'bin/OpenPoseDemo.exe'), *options], cwd=openposedir)
