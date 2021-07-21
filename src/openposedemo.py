@@ -3,13 +3,13 @@ import subprocess
 from pathlib import Path
 
 def openposedemo(options):
-    openposedir = os.path.abspath('openpose')
-    subprocess.run([os.path.join(openposedir, 'bin/OpenPoseDemo.exe'), *options], cwd=openposedir)
+    openposedir = Path(__file__).parent.parent / 'openpose'
+    subprocess.run([openposedir / 'bin/OpenPoseDemo.exe', *options], cwd=openposedir)
 
 
 def run_openpose(input_video, speedup=True, use_hand=False):
     video_name = os.path.split(input_video)[1].split('.')[0]
-    folder_path = os.path.abspath(os.path.join('output', video_name))
+    folder_path = Path(__file__).parent.parent / 'output' / video_name
     Path(folder_path).mkdir(parents=True, exist_ok=True)
     json_path = os.path.abspath(os.path.join(folder_path, 'json'))
     #os.mkdir(json_path)
