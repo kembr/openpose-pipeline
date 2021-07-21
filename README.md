@@ -6,6 +6,9 @@ Heplful flags:
   `--write_video_with_audio false`: if input is a video, rendered video output will not be saved with audio  
   `--disable_blending true`: renders keypoint skeletons on black background instead of original video  
 
+If using hand model, change net resolution and add hand flag:   
+`--net_resolution="-1x160" --hand`
+
 Command to run quickly on one person:  
 `bin\OpenPoseDemo.exe --video [video_file] --write_json [output_folder] --tracking 1 --number_people_max 1`
 
