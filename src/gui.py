@@ -1,12 +1,18 @@
 import tkinter as tk
-from tkinter.filedialog import askdirectory
+from tkinter.filedialog import askopenfilename
 from plotter import *
 from animate import animate
+from openposedemo import run_openpose
 import os
 
-def choose_folder():
-    folder = askdirectory()
-    chosen_folder_label.config(text = folder)
+
+def choose_video():
+    filename = askopenfilename(title='select', filetypes=[
+                    ("all video format", ".mp4"),
+                    ("all video format", ".mov"),
+                    ("all video format", ".avi"),
+                ])
+    chosen_folder_label.config(text = os.path.join(run_openpose(filename, speedup=True, use_hand=(use_hand_var.get()==1)), "json"))
 
 def show():
     data = load_openpose(chosen_folder_label.cget("text"))
@@ -87,12 +93,16 @@ chosen_joint1.set("Select a Joint")
 chosen_joint2 = tk.StringVar()
 chosen_joint2.set("Select a Joint")
 
+use_hand_var = tk.IntVar()
+
 choose_folder_frame = tk.Frame(borderwidth=2, relief="solid")
-choose_folder_label = tk.Label(master=choose_folder_frame, text="Select the folder containing the JSON files", height = 3, padx=10)
-choose_folder_button = tk.Button(master=choose_folder_frame, text="Choose", command=choose_folder)
+choose_folder_label = tk.Label(master=choose_folder_frame, text="Select a Video", height = 3, padx=10)
+use_hand_check = tk.Checkbutton(master=choose_folder_frame, text = "Use Hand Model", variable = use_hand_var, onvalue = 1, offvalue = 0)
+choose_folder_button = tk.Button(master=choose_folder_frame, text="Choose", command=choose_video)
 chosen_folder_label = tk.Label(master=choose_folder_frame)
 choose_folder_frame.pack(pady=10)
 choose_folder_label.pack()
+use_hand_check.pack(padx=10)
 choose_folder_button.pack()
 chosen_folder_label.pack()
 
