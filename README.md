@@ -8,12 +8,12 @@ Ensure that tkinter, numpy and matplotlib are installed: `pip3 install tk numpy	
 Clone the repository using git `git clone https://github.com/kembr/openpose-pipeline.git` or altneratively download as a zip file.  
 
 ### Usage:  
-	1. After running openpose on a video file using the flag `--write_json [output_folder]`   
-				you will have a folder containing the JSON files which our project can analyze.
-	2. Navigate to the root directory of the project which was cloned or unzipped and run using:  
-			 `python3 src/gui.py`
-	3. You should see the GUI pop up and be able to select the JSON folder to analyze,   
-				with the option to display and save output graphs.
+1. After running openpose on a video file using the flag `--write_json [output_folder]`   
+	you will have a folder containing the JSON files which our project can analyze.
+2. Navigate to the root directory of the project which was cloned or unzipped and run using:  
+	`python3 src/gui.py`
+3. You should see the GUI pop up and be able to select the JSON folder to analyze,   
+	with the option to display and save output graphs.
 
 ### Heplful flags for use with openpose:  
   `--write_json <path>`: specify path to save json output files.  
