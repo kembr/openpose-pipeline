@@ -17,7 +17,7 @@ Clone the repository using git `git clone https://github.com/kembr/openpose-pipe
 
 ### Heplful flags for use with openpose:  
   `--write_json <path>`: specify path to save json output files.  
-  `--write_video <path>`: specifiy path to save rendered video output.  
+  `--write_video <path><.avi|.mov>`: specifiy path to save rendered video output.  
   `--write_video_with_audio false`: if input is a video, rendered video output will not be saved with audio  
   `--disable_blending true`: renders keypoint skeletons on black background instead of original video  
 
